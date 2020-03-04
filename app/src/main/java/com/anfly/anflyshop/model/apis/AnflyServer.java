@@ -15,7 +15,6 @@ public interface AnflyServer {
     @GET("index")
     Flowable<HomeBean> getHome();
 
-    @GET("topic/lis")
-    Flowable<SpecialTopicBean> getTopic(@Query("page") int page, @Query("size") int si
-    );
+    @GET("topic/list")
+    Flowable<SpecialTopicBean> getTopic(@Query("page") int page, @Query("size") int size);
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ColorWhite"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/iv_topic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_interface" />
+
+    <TextView
+        android:id="@+id/tv_title_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_topic"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:text="关爱成长足迹"
+        android:textColor="@color/ColorTextTitle"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_topic_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title_topic"
+        android:layout_centerInParent="true"
+        android:padding="4dp"
+        android:text="专业运动" />
+
+    <TextView
+        android:id="@+id/tv_topic_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_topic_des"
+        android:layout_centerInParent="true"
+        android:paddingBottom="8dp"
+        android:text="0元起"
+        android:textColor="@color/ColorPrice" />
+</RelativeLayout>

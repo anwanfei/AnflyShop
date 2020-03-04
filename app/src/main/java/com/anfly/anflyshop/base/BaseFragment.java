@@ -67,7 +67,13 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
 
         initView();
         initData();
+        initListener();
     }
+
+    protected void initListener() {
+    }
+
+    ;
 
     /**
      * 获取当前界面的布局
@@ -96,7 +102,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
 
     @Override
     public void showTips(String msg) {
-
     }
 
     @Override
