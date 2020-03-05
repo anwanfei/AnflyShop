@@ -10,4 +10,9 @@
     <string name="title_sort">分类</string>
     <string name="title_shopping_cart">购物车</string>
     <string name="title_my">我的</string>
+    <string name="user">请输入用户名</string>
+    <string name="pwd">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册账号</string>
+    <string name="forget_pwd">忘记密码</string>
 </resources>

@@ -10,4 +10,5 @@ public interface Constants {
 
     //商城的基础地址
     String BASE_SHOP_URL = "https://cdwan.cn/api/";
+    String TOKEN = "token";
 }
