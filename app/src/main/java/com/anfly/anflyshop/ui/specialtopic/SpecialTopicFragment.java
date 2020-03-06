@@ -26,7 +26,7 @@ public class SpecialTopicFragment extends BaseFragment<SpecialTopicConstract.Pre
     RecyclerView rv;
     @BindView(R.id.srl)
     SmartRefreshLayout srl;
-    private ArrayList<SpecialTopicBean.DataBeanX.DataBean> list;
+    private List<SpecialTopicBean.DataBeanX.DataBean> list;
     private SpecialTopicAdapter adapter;
     private int page = 1;
     private int size = 10;
@@ -48,7 +48,7 @@ public class SpecialTopicFragment extends BaseFragment<SpecialTopicConstract.Pre
 
         rv.setLayoutManager(new LinearLayoutManager(context));
         list = new ArrayList<>();
-        adapter = new SpecialTopicAdapter(context, list);
+        adapter = new SpecialTopicAdapter(list, context);
         rv.setAdapter(adapter);
     }
 

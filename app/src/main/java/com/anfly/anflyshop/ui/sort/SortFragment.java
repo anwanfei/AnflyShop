@@ -5,6 +5,8 @@ import com.anfly.anflyshop.base.BaseFragment;
 import com.anfly.anflyshop.interfaces.IBasePresenter;
 
 public class SortFragment extends BaseFragment {
+
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_sort;
