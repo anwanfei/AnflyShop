@@ -55,7 +55,6 @@ public class BannerAdapter extends DelegateAdapter.Adapter<RecyclerView.ViewHold
                 .setImages(images)
                 .setImageLoader(new GlideImageLoader())
                 .start();
-
     }
 
     @Override

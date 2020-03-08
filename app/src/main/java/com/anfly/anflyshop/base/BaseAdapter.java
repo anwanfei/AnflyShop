@@ -25,6 +25,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     protected List<T> data;
     protected Context mContext;
+    private OnItemClickLIstener onItemClickLIstener;
 
     public BaseAdapter(List<T> data, Context context) {
         this.data = data;
@@ -139,8 +140,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
             return view;
         }
     }
-
-    private OnItemClickLIstener onItemClickLIstener;
 
     public void setOnItemClickLIstener(OnItemClickLIstener onItemClickLIstener) {
         this.onItemClickLIstener = onItemClickLIstener;

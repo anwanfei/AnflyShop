@@ -6,4 +6,6 @@
     <color name="ColorTextTitle">#000000</color>
     <color name="ColorPrice">#FF5722</color>
     <color name="ColorWhite">#ffffff</color>
+    <color name="ColorGray">#B1AAAA</color>
+    <color name="ColorBlackAlpha">#10000000</color>
 </resources>

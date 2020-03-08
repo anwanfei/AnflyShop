@@ -2,6 +2,7 @@ package com.anfly.anflyshop.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,8 +74,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
     protected void initListener() {
     }
 
-    ;
-
     /**
      * 获取当前界面的布局
      *
@@ -114,4 +113,14 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
             unbinder.unbind();
         }
     }
+
+    //启动一个新的activity
+    public void goToActivity(Class activity, Bundle bundle) {
+        Intent intent = new Intent(context, activity);
+        if (bundle != null) {
+            intent.putExtra("data", bundle);
+        }
+        startActivity(intent);
+    }
+
 }
