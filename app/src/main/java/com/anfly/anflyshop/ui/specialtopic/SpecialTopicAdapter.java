@@ -24,7 +24,7 @@ public class SpecialTopicAdapter extends BaseAdapter {
 
     @Override
     public void bindData(BaseViewHolder holder, Object data) {
-        SpecialTopicBean.DataBeanX.DataBean dataBean = (SpecialTopicBean.DataBeanX.DataBean) data;
+            SpecialTopicBean.DataBeanX.DataBean dataBean = (SpecialTopicBean.DataBeanX.DataBean) data;
         ImageView iv_topic = (ImageView) holder.getViewById(R.id.iv_topic);
         TextView tv_title_topic = (TextView) holder.getViewById(R.id.tv_title_topic);
         TextView tv_topic_des = (TextView) holder.getViewById(R.id.tv_topic_des);
@@ -34,5 +34,12 @@ public class SpecialTopicAdapter extends BaseAdapter {
         tv_title_topic.setText(dataBean.getTitle());
         tv_topic_des.setText(dataBean.getSubtitle());
         tv_topic_price.setText(String.valueOf(dataBean.getPrice_info()));
+
+        if (onClickListener != null) {
+            tv_title_topic.setOnClickListener(onClickListener);
+            tv_title_topic.setTag(dataBean);
+            tv_topic_des.setOnClickListener(onClickListener);
+            tv_topic_des.setTag(dataBean);
+        }
     }
 }

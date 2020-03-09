@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anfly.anflyshop">
-
+    <!-- 获取手机网络状态 -->
     <application
         android:name=".app.AnflyApplication"
         android:allowBackup="true"
@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.webview.WebviewActivity"></activity>
+        <activity android:name=".ui.specialtopic.SpecialTopicActivity"></activity>
+        <activity android:name=".ui.webview.WebviewActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.Login.LoginActivity" />
         <activity android:name=".MainActivity">
@@ -21,11 +22,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.BrandDetailsActivty" />
-    </application> <!-- 获取手机网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读取sd卡图片 -->
+    </application> <!-- 读取sd卡图片 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- SD卡缓存图片 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

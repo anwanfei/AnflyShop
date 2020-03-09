@@ -26,10 +26,16 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     protected List<T> data;
     protected Context mContext;
     private OnItemClickLIstener onItemClickLIstener;
+    //用来响应列表条目中的出发时间
+    protected View.OnClickListener onClickListener;
 
     public BaseAdapter(List<T> data, Context context) {
         this.data = data;
         this.mContext = context;
+    }
+
+    public void addOnClickListener(View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     /**
@@ -42,7 +48,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(getLayout(), parent,false);
+        View view = LayoutInflater.from(mContext).inflate(getLayout(), parent, false);
         BaseViewHolder baseViewHolder = new BaseViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override

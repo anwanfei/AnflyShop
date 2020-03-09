@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.ui.specialtopic;
 
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfly.anflyshop.R;
+import com.anfly.anflyshop.base.BaseAdapter;
 import com.anfly.anflyshop.base.BaseFragment;
 import com.anfly.anflyshop.interfaces.specialtopic.SpecialTopicConstract;
 import com.anfly.anflyshop.model.bean.SpecialTopicBean;
@@ -50,6 +52,30 @@ public class SpecialTopicFragment extends BaseFragment<SpecialTopicConstract.Pre
         list = new ArrayList<>();
         adapter = new SpecialTopicAdapter(list, context);
         rv.setAdapter(adapter);
+
+        adapter.setOnItemClickLIstener(new BaseAdapter.OnItemClickLIstener() {
+            @Override
+            public void onItemClick(BaseAdapter.BaseViewHolder holder, int position) {
+
+            }
+        });
+
+        //响应条目中组件的点击事件
+        adapter.addOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.tv_title_topic:
+                        SpecialTopicBean.DataBeanX.DataBean dataBean = (SpecialTopicBean.DataBeanX.DataBean) v.getTag();
+                        Toast.makeText(context, dataBean.getTitle(), Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.tv_topic_des:
+                        SpecialTopicBean.DataBeanX.DataBean dataBean1 = (SpecialTopicBean.DataBeanX.DataBean) v.getTag();
+                        Toast.makeText(context, dataBean1.getSubtitle(), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
 
     @Override

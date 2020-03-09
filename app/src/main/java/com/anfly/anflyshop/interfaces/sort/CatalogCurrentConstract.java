@@ -2,14 +2,14 @@ package com.anfly.anflyshop.interfaces.sort;
 
 import com.anfly.anflyshop.interfaces.IBasePresenter;
 import com.anfly.anflyshop.interfaces.IBaseView;
-import com.anfly.anflyshop.model.bean.CatalogIndexBean;
+import com.anfly.anflyshop.model.bean.CatalogCurrentBean;
 
-public interface SortConstract {
+public interface CatalogCurrentConstract {
     interface View extends IBaseView {
-        void getSortResponse(CatalogIndexBean catalogIndexBean);
+        void getCatalogCurrentResponse(CatalogCurrentBean catalogCurrentBean);
     }
 
     interface Presenter extends IBasePresenter<View> {
-        void getSortData();
+        void getCatalogCurrentData(int id);
     }
 }
