@@ -3,6 +3,8 @@ package com.anfly.anflyshop.model.apis;
 import com.anfly.anflyshop.model.bean.BrandDetailsBean;
 import com.anfly.anflyshop.model.bean.CatalogCurrentBean;
 import com.anfly.anflyshop.model.bean.CatalogIndexBean;
+import com.anfly.anflyshop.model.bean.GoodsCatalogListBean;
+import com.anfly.anflyshop.model.bean.GoodscategoryBean;
 import com.anfly.anflyshop.model.bean.HomeBean;
 import com.anfly.anflyshop.model.bean.LoginBean;
 import com.anfly.anflyshop.model.bean.RegisterBean;
@@ -42,4 +44,10 @@ public interface AnflyServer {
 
     @GET("catalog/current")
     Flowable<CatalogCurrentBean> catalogCurrent(@Query("id") int id);
+
+    @GET("goods/category")
+    Flowable<GoodscategoryBean> goodsCategory(@Query("id") int id);
+
+    @GET("goods/list")
+    Flowable<GoodsCatalogListBean> goodsList(@Query("id") int id, @Query("page") int page, @Query("size") int size);
 }

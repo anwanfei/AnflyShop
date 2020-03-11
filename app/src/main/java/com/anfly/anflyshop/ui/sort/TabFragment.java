@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.ui.sort;
 
+import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfly.anflyshop.R;
+import com.anfly.anflyshop.base.BaseAdapter;
 import com.anfly.anflyshop.base.BaseFragment;
 import com.anfly.anflyshop.interfaces.sort.CatalogCurrentConstract;
 import com.anfly.anflyshop.model.bean.CatalogCurrentBean;
@@ -21,7 +23,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabFragment extends BaseFragment<CatalogCurrentConstract.Presenter> implements CatalogCurrentConstract.View {
+public class TabFragment extends BaseFragment<CatalogCurrentConstract.Presenter> implements CatalogCurrentConstract.View, BaseAdapter.OnItemClickLIstener {
 
     @BindView(R.id.rv)
     RecyclerView rv;
@@ -51,6 +53,8 @@ public class TabFragment extends BaseFragment<CatalogCurrentConstract.Presenter>
 
         adapter = new CatalogCurrentAdapter(subCategoryListBeans, context);
         rv.setAdapter(adapter);
+
+        adapter.setOnItemClickLIstener(this);
     }
 
     @Override
@@ -67,5 +71,13 @@ public class TabFragment extends BaseFragment<CatalogCurrentConstract.Presenter>
         tvFrotName.setText(currentCategory.getFront_name());
         subCategoryListBeans.addAll(currentCategory.getSubCategoryList());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(BaseAdapter.BaseViewHolder holder, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",subCategoryListBeans.get(position).getId());
+        bundle.putInt("position",position);
+        goToActivity(CatalogDetailsActivity.class,bundle);
     }
 }
