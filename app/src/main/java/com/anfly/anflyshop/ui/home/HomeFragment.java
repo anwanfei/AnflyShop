@@ -27,6 +27,7 @@ import com.anfly.anflyshop.ui.home.adapter.HomeHotGoodsAdsapterr;
 import com.anfly.anflyshop.ui.home.adapter.HomeNewGoodsAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTitleAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTopicAdaper;
+import com.anfly.anflyshop.ui.specialtopic.SpecialTopicActivity;
 import com.anfly.anflyshop.ui.webview.WebviewActivity;
 
 import java.util.ArrayList;

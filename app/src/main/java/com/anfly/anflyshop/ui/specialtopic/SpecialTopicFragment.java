@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.ui.specialtopic;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -56,7 +57,9 @@ public class SpecialTopicFragment extends BaseFragment<SpecialTopicConstract.Pre
         adapter.setOnItemClickLIstener(new BaseAdapter.OnItemClickLIstener() {
             @Override
             public void onItemClick(BaseAdapter.BaseViewHolder holder, int position) {
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", list.get(position).getId());
+                goToActivity(SpecialTopicActivity.class, bundle);
             }
         });
 

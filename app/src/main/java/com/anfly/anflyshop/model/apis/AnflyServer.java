@@ -9,6 +9,7 @@ import com.anfly.anflyshop.model.bean.HomeBean;
 import com.anfly.anflyshop.model.bean.LoginBean;
 import com.anfly.anflyshop.model.bean.RegisterBean;
 import com.anfly.anflyshop.model.bean.SpecialTopicBean;
+import com.anfly.anflyshop.model.bean.TopicDetailBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
@@ -50,4 +51,7 @@ public interface AnflyServer {
 
     @GET("goods/list")
     Flowable<GoodsCatalogListBean> goodsList(@Query("id") int id, @Query("page") int page, @Query("size") int size);
+
+    @GET("topic/detail")
+    Flowable<TopicDetailBean> topicDetail(@Query("id") int id);
 }
