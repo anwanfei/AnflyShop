@@ -24,6 +24,7 @@ public class CatalogCurrentAdapter extends BaseAdapter {
 
     @Override
     public void bindData(BaseViewHolder holder, Object data) {
+
         CatalogCurrentBean.DataBean.CurrentCategoryBean.SubCategoryListBean bean = (CatalogCurrentBean.DataBean.CurrentCategoryBean.SubCategoryListBean) data;
         ImageView iv_catalogcurrent_item = (ImageView) holder.getViewById(R.id.iv_catalogcurrent_item);
         TextView tv_catalogcurrent_item = (TextView) holder.getViewById(R.id.tv_catalogcurrent_item);

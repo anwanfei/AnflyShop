@@ -37,6 +37,7 @@ public abstract class BaseDelegateAdapter<T> extends DelegateAdapter.Adapter {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(getLayout(), parent, false);
         BaseDelegateViewHolder baseDelegateViewHolder = new BaseDelegateViewHolder(view);
+
         return baseDelegateViewHolder;
     }
 

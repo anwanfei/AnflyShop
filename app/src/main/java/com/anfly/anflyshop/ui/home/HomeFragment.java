@@ -4,6 +4,7 @@ package com.anfly.anflyshop.ui.home;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -27,7 +28,6 @@ import com.anfly.anflyshop.ui.home.adapter.HomeHotGoodsAdsapterr;
 import com.anfly.anflyshop.ui.home.adapter.HomeNewGoodsAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTitleAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTopicAdaper;
-import com.anfly.anflyshop.ui.specialtopic.SpecialTopicActivity;
 import com.anfly.anflyshop.ui.webview.WebviewActivity;
 
 import java.util.ArrayList;
@@ -205,6 +205,12 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
             categoryHelper.setAutoExpand(true);
             adapters.addAdapter(new HomeCategoryAdapter(context, categoryList.get(i).getGoodsList(), categoryHelper));
         }
+        rv.addItemDecoration(new DividerItemDecoration(getActivity(), RecyclerView.VERTICAL));
         rv.setAdapter(adapters);
+    }
+
+    @Override
+    public void getHomeDataResponse(List<HomeBean.HomeListBean> list) {
+
     }
 }

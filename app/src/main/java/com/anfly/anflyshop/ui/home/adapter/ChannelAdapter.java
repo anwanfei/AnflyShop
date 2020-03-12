@@ -27,6 +27,5 @@ public class ChannelAdapter extends BaseDelegateAdapter {
         HomeBean.DataBean.ChannelBean bean = (HomeBean.DataBean.ChannelBean) data;
         TextView tv_channel = (TextView) holder.getViewById(R.id.tv_channel);
         tv_channel.setText(bean.getName());
-
     }
 }
