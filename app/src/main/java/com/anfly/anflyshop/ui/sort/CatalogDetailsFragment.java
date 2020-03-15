@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.ui.sort;
 
+import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfly.anflyshop.R;
+import com.anfly.anflyshop.base.BaseAdapter;
 import com.anfly.anflyshop.base.BaseFragment;
 import com.anfly.anflyshop.interfaces.sort.CatalogDetailsListConstact;
 import com.anfly.anflyshop.model.bean.GoodsCatalogListBean;
@@ -74,5 +76,15 @@ public class CatalogDetailsFragment extends BaseFragment<CatalogDetailsListConst
         List<GoodsCatalogListBean.DataBeanX.GoodsListBean> goodsList = goodsCatalogListBean.getData().getGoodsList();
         list.addAll(goodsList);
         adapter.notifyDataSetChanged();
+
+        adapter.setOnItemClickLIstener(new BaseAdapter.OnItemClickLIstener() {
+            @Override
+            public void onItemClick(BaseAdapter.BaseViewHolder holder, int position) {
+                int id = list.get(position).getId();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",id);
+                goToActivity(GoodsShopInfoActivity.class,bundle);
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ import com.anfly.anflyshop.model.bean.BrandDetailsBean;
 import com.anfly.anflyshop.model.bean.CatalogCurrentBean;
 import com.anfly.anflyshop.model.bean.CatalogIndexBean;
 import com.anfly.anflyshop.model.bean.GoodsCatalogListBean;
+import com.anfly.anflyshop.model.bean.GoodsShopDetailBean;
 import com.anfly.anflyshop.model.bean.GoodscategoryBean;
 import com.anfly.anflyshop.model.bean.HomeBean;
 import com.anfly.anflyshop.model.bean.LoginBean;
@@ -54,4 +55,7 @@ public interface AnflyServer {
 
     @GET("topic/detail")
     Flowable<TopicDetailBean> topicDetail(@Query("id") int id);
+
+    @GET("goods/detail")
+    Flowable<GoodsShopDetailBean> goodsDetail(@Query("id") int id);
 }
