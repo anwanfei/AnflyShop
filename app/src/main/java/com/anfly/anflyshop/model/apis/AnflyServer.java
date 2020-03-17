@@ -1,6 +1,8 @@
 package com.anfly.anflyshop.model.apis;
 
 import com.anfly.anflyshop.model.bean.BrandDetailsBean;
+import com.anfly.anflyshop.model.bean.CardAddBean;
+import com.anfly.anflyshop.model.bean.CartIndexBean;
 import com.anfly.anflyshop.model.bean.CatalogCurrentBean;
 import com.anfly.anflyshop.model.bean.CatalogIndexBean;
 import com.anfly.anflyshop.model.bean.GoodsCatalogListBean;
@@ -58,4 +60,11 @@ public interface AnflyServer {
 
     @GET("goods/detail")
     Flowable<GoodsShopDetailBean> goodsDetail(@Query("id") int id);
+
+    @GET("cart/index")
+    Flowable<CartIndexBean> cartIndex();
+
+    @POST("cart/add")
+    @FormUrlEncoded
+    Flowable<CardAddBean> cardAdd(@Field("goodsId") int goodsId, @Field("productId") int productId, @Field("number") int number);
 }
