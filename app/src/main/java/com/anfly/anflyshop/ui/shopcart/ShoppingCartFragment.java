@@ -1,10 +1,12 @@
 package com.anfly.anflyshop.ui.shopcart;
 
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -88,7 +90,6 @@ public class ShoppingCartFragment extends BaseFragment<ShopCartConstract.Present
 //        }
 //        tvPriceAll.setText("¥" + price);
 //        cbChooseAll.setText("全选(" + number + ")");
-
     }
 
     @Override
@@ -205,9 +206,16 @@ public class ShoppingCartFragment extends BaseFragment<ShopCartConstract.Present
                     tvBuy.setText("下单");
                     tvEditComplete.setText("编辑");
                 }
-                adapter.setItemVisibility(tvEditComplete.getText().toString());
+                adapter.setItemVisibility(tvEditComplete.getText().toString(), true);
                 break;
             case R.id.tv_buy:
+                if (list == null || list.size() <= 0) {
+                    Toast.makeText(getActivity(), "请先选中商品", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("list", list);
+                goToActivity(ConfirmOrderActivity.class, bundle);
                 break;
         }
     }

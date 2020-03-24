@@ -18,6 +18,7 @@ import java.util.List;
 public class ShopCartAdapter extends BaseAdapter {
 
     private String state = "编辑";
+    private boolean isShowCheckbox = true;
 
     public ShopCartAdapter(List data, Context context) {
         super(data, context);
@@ -40,6 +41,12 @@ public class ShopCartAdapter extends BaseAdapter {
         CheckBox cb_item = (CheckBox) holder.getViewById(R.id.cb_item);
         ImageView iv_add_shop_cart = (ImageView) holder.getViewById(R.id.iv_add_shop_cart);
         ConstraintLayout cl_edit = (ConstraintLayout) holder.getViewById(R.id.cl_edit);
+
+        if (isShowCheckbox) {
+            cb_item.setVisibility(View.VISIBLE);
+        } else {
+            cb_item.setVisibility(View.GONE);
+        }
 
         //根据  状态  设置条目的 控件的显示和隐藏
         if (state.equals("编辑")) {
@@ -68,8 +75,9 @@ public class ShopCartAdapter extends BaseAdapter {
     }
 
     //改变条目控件  状态值    编辑  完成
-    public void setItemVisibility(String state) {
+    public void setItemVisibility(String state, boolean isShowCheckBox) {
         this.state = state;
+        this.isShowCheckbox = isShowCheckBox;
         notifyDataSetChanged();
     }
 }

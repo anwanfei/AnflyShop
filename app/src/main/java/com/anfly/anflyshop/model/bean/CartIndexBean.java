@@ -1,8 +1,9 @@
 package com.anfly.anflyshop.model.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CartIndexBean {
+public class CartIndexBean implements Serializable {
     /**
      * errno : 0
      * errmsg :
@@ -37,7 +38,7 @@ public class CartIndexBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * cartList : [{"id":162,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":10,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}]
          * cartTotal : {"goodsCount":10,"goodsAmount":13990,"checkedGoodsCount":10,"checkedGoodsAmount":13990}
@@ -108,7 +109,7 @@ public class CartIndexBean {
             }
         }
 
-        public static class CartListBean {
+        public static class CartListBean implements Serializable{
             /**
              * id : 162
              * user_id : 5
