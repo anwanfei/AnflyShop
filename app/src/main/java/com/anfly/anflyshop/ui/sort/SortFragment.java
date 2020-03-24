@@ -11,11 +11,13 @@ import com.anfly.anflyshop.base.BaseFragment;
 import com.anfly.anflyshop.interfaces.sort.SortConstract;
 import com.anfly.anflyshop.model.bean.CatalogIndexBean;
 import com.anfly.anflyshop.presenter.sort.SortPresenter;
+import com.anfly.anflyshop.ui.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.QTabView;
@@ -42,6 +44,7 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
 
     @Override
     protected void initView() {
+
     }
 
     private List<Fragment> getFragments(List<CatalogIndexBean.DataBean.CategoryListBean> size) {
@@ -93,5 +96,10 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
                     }
                 });
         tablayout.setTabSelected(0);
+    }
+
+    @OnClick(R.id.ll_search)
+    public void onViewClicked() {
+        goToActivity(SearchActivity.class, null);
     }
 }

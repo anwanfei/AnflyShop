@@ -11,6 +11,7 @@ import com.anfly.anflyshop.model.bean.GoodscategoryBean;
 import com.anfly.anflyshop.model.bean.HomeBean;
 import com.anfly.anflyshop.model.bean.LoginBean;
 import com.anfly.anflyshop.model.bean.RegisterBean;
+import com.anfly.anflyshop.model.bean.SearchResultBean;
 import com.anfly.anflyshop.model.bean.SpecialTopicBean;
 import com.anfly.anflyshop.model.bean.TopicDetailBean;
 
@@ -63,6 +64,10 @@ public interface AnflyServer {
 
     @GET("cart/index")
     Flowable<CartIndexBean> cartIndex();
+
+    @GET("goods/list")
+    Flowable<SearchResultBean> searchResultList(@Query("keyword") String keyword, @Query("page") int page
+            , @Query("size") int size, @Query("sort") String sort, @Query("order") String order, @Query("categoryId") int categoryId);
 
     @POST("cart/add")
     @FormUrlEncoded

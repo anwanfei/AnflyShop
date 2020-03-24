@@ -140,6 +140,24 @@ public class CartIndexBean {
             private String goods_specifition_ids;
             private int checked;
             private String list_pic_url;
+            private boolean isChecked = true;
+            private boolean isCheckedByChooseAll ;
+
+            public boolean isCheckedByChooseAll() {
+                return isCheckedByChooseAll;
+            }
+
+            public void setCheckedByChooseAll(boolean checkedByChooseAll) {
+                isCheckedByChooseAll = checkedByChooseAll;
+            }
+
+            public boolean isChecked() {
+                return isChecked;
+            }
+
+            public void setChecked(boolean checked) {
+                isChecked = checked;
+            }
 
             public int getId() {
                 return id;
