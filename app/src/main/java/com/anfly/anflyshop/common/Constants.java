@@ -12,4 +12,5 @@ public interface Constants {
     String BASE_SHOP_URL = "https://cdwan.cn/api/";
     String TOKEN = "token";
     String URL = "url";
+    String NICKNAME = "nickname";
 }

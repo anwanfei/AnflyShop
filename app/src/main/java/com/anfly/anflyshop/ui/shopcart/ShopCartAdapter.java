@@ -1,6 +1,7 @@
 package com.anfly.anflyshop.ui.shopcart;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class ShopCartAdapter extends BaseAdapter {
+
+    private String state = "编辑";
 
     public ShopCartAdapter(List data, Context context) {
         super(data, context);
@@ -38,10 +41,20 @@ public class ShopCartAdapter extends BaseAdapter {
         ImageView iv_add_shop_cart = (ImageView) holder.getViewById(R.id.iv_add_shop_cart);
         ConstraintLayout cl_edit = (ConstraintLayout) holder.getViewById(R.id.cl_edit);
 
+        //根据  状态  设置条目的 控件的显示和隐藏
+        if (state.equals("编辑")) {
+            tv_total_num.setVisibility(View.VISIBLE);
+            cl_edit.setVisibility(View.GONE);
+
+        } else {
+            tv_total_num.setVisibility(View.GONE);
+            cl_edit.setVisibility(View.VISIBLE);
+        }
+
         Glide.with(mContext).load(cartListBean.getList_pic_url()).into(iv_add_shop_cart);
         tv_name.setText(cartListBean.getGoods_name());
         tv_price.setText("¥" + cartListBean.getRetail_price());
-        tv_num_shop.setText("×" + cartListBean.getNumber());
+        tv_total_num.setText("×" + cartListBean.getNumber());
         cb_item.setChecked(cartListBean.isChecked());
 
 //        cb_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -52,5 +65,11 @@ public class ShopCartAdapter extends BaseAdapter {
 //                EventBus.getDefault().post("layoutPosition");
 //            }
 //        });
+    }
+
+    //改变条目控件  状态值    编辑  完成
+    public void setItemVisibility(String state) {
+        this.state = state;
+        notifyDataSetChanged();
     }
 }

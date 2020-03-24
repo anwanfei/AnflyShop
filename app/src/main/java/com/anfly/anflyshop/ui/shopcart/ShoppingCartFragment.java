@@ -49,7 +49,6 @@ public class ShoppingCartFragment extends BaseFragment<ShopCartConstract.Present
     ConstraintLayout clBottom;
     private ArrayList<CartIndexBean.DataBean.CartListBean> list;
     private ShopCartAdapter adapter;
-    private boolean isEdit;
 
     public ShoppingCartFragment() {
         // Required empty public constructor
@@ -195,12 +194,18 @@ public class ShoppingCartFragment extends BaseFragment<ShopCartConstract.Present
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_edit_complete:
-                isEdit = !isEdit;
-                if (isEdit) {
 
-                } else {
+                String state = tvEditComplete.getText().toString();
+                if ("编辑".equals(state)) {// 编辑状态    显示的name   隐藏 添加数量
 
+                    tvBuy.setText("删除所有");
+                    tvEditComplete.setText("完成");
+                } else {// 完成    显示的 添加商品的数量
+
+                    tvBuy.setText("下单");
+                    tvEditComplete.setText("编辑");
                 }
+                adapter.setItemVisibility(tvEditComplete.getText().toString());
                 break;
             case R.id.tv_buy:
                 break;

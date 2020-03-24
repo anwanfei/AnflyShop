@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anfly.anflyshop.R;
 import com.anfly.anflyshop.base.BaseActivity;
@@ -65,6 +66,9 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
     public void loginReeurn(LoginBean loginBean) {
         String token = loginBean.getData().getToken();
         SharedPreferencesUtil.getInstance().setParam(Constants.TOKEN, token);
+        String nickname = loginBean.getData().getUserInfo().getNickname();
+        SharedPreferencesUtil.getInstance().setParam(Constants.NICKNAME, nickname);
+        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
         finish();
     }
 

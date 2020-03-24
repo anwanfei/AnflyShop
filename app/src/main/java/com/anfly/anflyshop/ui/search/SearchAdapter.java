@@ -29,7 +29,7 @@ public class SearchAdapter extends BaseAdapter {
         TextView tv_search_name = (TextView) holder.getViewById(R.id.tv_search_name);
         TextView tv_search_price = (TextView) holder.getViewById(R.id.tv_search_price);
 
-        tv_search_name.setText(bean.getName());
+        tv_search_name.setText(bean .getName());
         tv_search_price.setText("¥" + bean.getRetail_price());
         Glide.with(mContext).load(bean.getList_pic_url()).into(iv_item_search);
     }

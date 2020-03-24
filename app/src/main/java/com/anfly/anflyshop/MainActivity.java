@@ -12,7 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.anfly.anflyshop.ui.Login.LoginActivity;
 import com.anfly.anflyshop.ui.test.Base64GetValueActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -81,8 +80,4 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private void openLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
 }
