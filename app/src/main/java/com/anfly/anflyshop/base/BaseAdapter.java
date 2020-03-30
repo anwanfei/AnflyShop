@@ -26,7 +26,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     protected List<T> data;
     protected Context mContext;
     private OnItemClickLIstener onItemClickLIstener;
-    //用来响应列表条目中的出发时间
+    //用来响应列表条目中的触发事件
     protected View.OnClickListener onClickListener;
 
     public BaseAdapter(List<T> data, Context context) {

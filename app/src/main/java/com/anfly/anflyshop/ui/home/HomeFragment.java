@@ -28,6 +28,8 @@ import com.anfly.anflyshop.ui.home.adapter.HomeHotGoodsAdsapterr;
 import com.anfly.anflyshop.ui.home.adapter.HomeNewGoodsAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTitleAdapter;
 import com.anfly.anflyshop.ui.home.adapter.HomeTopicAdaper;
+import com.anfly.anflyshop.ui.sort.GoodsShopInfoActivity;
+import com.anfly.anflyshop.ui.specialtopic.SpecialTopicActivity;
 import com.anfly.anflyshop.ui.webview.WebviewActivity;
 
 import java.util.ArrayList;
@@ -67,10 +69,12 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
     public void getHomeDataReturn(HomeBean result) {
         final HomeBean.DataBean data = result.getData();
 
+        //设置回收复用池大小
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         rv.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 10);
 
+        //创建VirtualLayoutManager对象
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(context);
         rv.setLayoutManager(layoutManager);
         DelegateAdapter adapters = new DelegateAdapter(layoutManager, true);
@@ -144,7 +148,16 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         gridLayoutHelper.setMarginBottom(0);
         //自动填充满布局
         gridLayoutHelper.setAutoExpand(true);
-        adapters.addAdapter(new HomeNewGoodsAdapter(context, data.getNewGoodsList(), gridLayoutHelper));
+        HomeNewGoodsAdapter homeNewGoodsAdapter = new HomeNewGoodsAdapter(context, data.getNewGoodsList(), gridLayoutHelper);
+        adapters.addAdapter(homeNewGoodsAdapter);
+        homeNewGoodsAdapter.setOnItemClickLIstener(new BaseDelegateAdapter.OnItemClickLIstener() {
+            @Override
+            public void onItemClick(BaseDelegateAdapter.BaseDelegateViewHolder holder, int position) {
+                int id = data.getNewGoodsList().get(position).getId();
+                goGoodsInfo(position, id);
+            }
+        });
+
 
         //人气推荐标题，使用SingleLayoutHelper通栏布局，只会显示一个组件View
         ArrayList<String> hotGoodstitles = new ArrayList<>();
@@ -152,8 +165,16 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         adapters.addAdapter(new HomeTitleAdapter(context, hotGoodstitles, singleLayoutHelper));
 
         //人气推荐：使用 线性布局LinearLayoutHelper
+        List<HomeBean.DataBean.HotGoodsListBean> hotGoodsList = data.getHotGoodsList();
         LinearLayoutHelper hotGoodsHelper = new LinearLayoutHelper(10);
-        adapters.addAdapter(new HomeHotGoodsAdsapterr(context, data.getHotGoodsList(), hotGoodsHelper));
+        HomeHotGoodsAdsapterr homeHotGoodsAdsapterr = new HomeHotGoodsAdsapterr(context, hotGoodsList, hotGoodsHelper);
+        adapters.addAdapter(homeHotGoodsAdsapterr);
+        homeHotGoodsAdsapterr.setOnItemClickLIstener(new BaseDelegateAdapter.OnItemClickLIstener() {
+            @Override
+            public void onItemClick(BaseDelegateAdapter.BaseDelegateViewHolder holder, int position) {
+                goGoodsInfo(position, hotGoodsList.get(position).getId());
+            }
+        });
 
         //专题标题，使用SingleLayoutHelper通栏布局，只会显示一个组件View
         ArrayList<String> topictitles = new ArrayList<>();
@@ -178,7 +199,9 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         homeTopicAdaper.setOnItemClickLIstener(new BaseDelegateAdapter.OnItemClickLIstener() {
             @Override
             public void onItemClick(BaseDelegateAdapter.BaseDelegateViewHolder holder, int position) {
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", topicList.get(position).getId());
+                goToActivity(SpecialTopicActivity.class, bundle);
             }
         });
 
@@ -188,7 +211,8 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         for (int i = 0; i < categoryList.size(); i++) {
             //分类标题
             ArrayList<String> categoryTitles = new ArrayList<>();
-            categoryTitles.add(categoryList.get(i).getName());
+            final HomeBean.DataBean.CategoryListBean categoryListBean = categoryList.get(i);
+            categoryTitles.add(categoryListBean.getName());
             adapters.addAdapter(new HomeTitleAdapter(context, categoryTitles, singleLayoutHelper));
 
             //分类列表
@@ -203,10 +227,25 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
             categoryHelper.setMarginBottom(10);
             //自动填充满布局
             categoryHelper.setAutoExpand(true);
-            adapters.addAdapter(new HomeCategoryAdapter(context, categoryList.get(i).getGoodsList(), categoryHelper));
+            HomeCategoryAdapter homeCategoryAdapter = new HomeCategoryAdapter(context, categoryListBean.getGoodsList(), categoryHelper);
+
+            adapters.addAdapter(homeCategoryAdapter);
+            homeCategoryAdapter.setOnItemClickLIstener(new BaseDelegateAdapter.OnItemClickLIstener() {
+                @Override
+                public void onItemClick(BaseDelegateAdapter.BaseDelegateViewHolder holder, int position) {
+                    goGoodsInfo(position, categoryListBean.getGoodsList().get(position).getId());
+                }
+            });
         }
         rv.addItemDecoration(new DividerItemDecoration(getActivity(), RecyclerView.VERTICAL));
         rv.setAdapter(adapters);
+    }
+
+    private void goGoodsInfo(int position, int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", id);
+        bundle.putInt("position", position);
+        goToActivity(GoodsShopInfoActivity.class, bundle);
     }
 
     @Override

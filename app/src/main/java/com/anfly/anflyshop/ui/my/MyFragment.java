@@ -66,17 +66,17 @@ public class MyFragment extends Fragment {
 
     private void initData() {
         list = new ArrayList<>();
-        list.add(new OwnerBean("我的订单", R.drawable.ic_star_empty, OrderActivity.class));
-        list.add(new OwnerBean("优惠券", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("礼品卡", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("我的收藏", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("我的足迹", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("会员福利", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("地址管理", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("账号安全", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("联系客服", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("帮助中心", R.drawable.ic_star_empty, CouponActivity.class));
-        list.add(new OwnerBean("意见反馈", R.drawable.ic_star_empty, CouponActivity.class));
+        list.add(new OwnerBean("我的订单", R.mipmap.profile_profile_crowdfunding_ic, OrderActivity.class));
+        list.add(new OwnerBean("优惠券", R.mipmap.profile_profile_reimburse_ic, CouponActivity.class));
+        list.add(new OwnerBean("礼品卡", R.mipmap.profile_profile_reimburse_ic, CouponActivity.class));
+        list.add(new OwnerBean("我的收藏", R.mipmap.profile_profile_ic_quhua, CouponActivity.class));
+        list.add(new OwnerBean("我的足迹", R.mipmap.profile_profile_address_ic, CouponActivity.class));
+        list.add(new OwnerBean("会员福利", R.mipmap.profile_profile_ic_select, CouponActivity.class));
+        list.add(new OwnerBean("地址管理", R.mipmap.profile_profile_address_ic, CouponActivity.class));
+        list.add(new OwnerBean("账号安全", R.mipmap.profile_profile_cooperation_ic, CouponActivity.class));
+        list.add(new OwnerBean("联系客服", R.mipmap.profile_profile_phone_ic, CouponActivity.class));
+        list.add(new OwnerBean("帮助中心", R.mipmap.profile_profile_phone_ic, CouponActivity.class));
+        list.add(new OwnerBean("意见反馈", R.mipmap.profile_profile_phone_ic, CouponActivity.class));
     }
 
     private void initView() {

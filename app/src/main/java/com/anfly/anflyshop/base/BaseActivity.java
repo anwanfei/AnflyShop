@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -76,5 +77,14 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         if(unbinder!=null) {
             unbinder.unbind();
         }
+    }
+
+    //启动一个新的activity
+    public void goToActivity(Class activity, Bundle bundle) {
+        Intent intent = new Intent(this, activity);
+        if (bundle != null) {
+            intent.putExtra("data", bundle);
+        }
+        startActivity(intent);
     }
 }

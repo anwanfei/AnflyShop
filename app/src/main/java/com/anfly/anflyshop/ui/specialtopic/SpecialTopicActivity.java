@@ -53,7 +53,7 @@ public class SpecialTopicActivity extends BaseActivity<SpecialTopicDetailConstra
         StringBuilder sb = new StringBuilder();
         sb.append("<html><head>");
         sb.append("<style>" + css_str + "</style></head><body>");
-        sb.append(data.getContent() + "</body></html>");
+        sb.append(data.getContent().replace("img src=\"","img src=\"http:") + "</body></html>");
         webviewTopicDetail.loadData(sb.toString(), "text/html", "utf-8");
 
 //        List<String> urlList = new ArrayList<>();

@@ -24,7 +24,7 @@ public class SpecialTopicAdapter extends BaseAdapter {
 
     @Override
     public void bindData(BaseViewHolder holder, Object data) {
-            SpecialTopicBean.DataBeanX.DataBean dataBean = (SpecialTopicBean.DataBeanX.DataBean) data;
+        SpecialTopicBean.DataBeanX.DataBean dataBean = (SpecialTopicBean.DataBeanX.DataBean) data;
         ImageView iv_topic = (ImageView) holder.getViewById(R.id.iv_topic);
         TextView tv_title_topic = (TextView) holder.getViewById(R.id.tv_title_topic);
         TextView tv_topic_des = (TextView) holder.getViewById(R.id.tv_topic_des);

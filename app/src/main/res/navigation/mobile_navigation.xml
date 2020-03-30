@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.anfly.anflyshop.ui.home.NewHomeFragment"
+        android:name="com.anfly.anflyshop.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 

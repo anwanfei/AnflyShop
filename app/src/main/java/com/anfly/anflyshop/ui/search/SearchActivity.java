@@ -1,6 +1,7 @@
 package com.anfly.anflyshop.ui.search;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -15,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfly.anflyshop.R;
 import com.anfly.anflyshop.base.BaseActivity;
+import com.anfly.anflyshop.base.BaseAdapter;
 import com.anfly.anflyshop.interfaces.search.SearchResultContract;
 import com.anfly.anflyshop.model.bean.SearchResultBean;
 import com.anfly.anflyshop.presenter.search.SearchResultPresenter;
+import com.anfly.anflyshop.ui.sort.GoodsShopInfoActivity;
 import com.anfly.anflyshop.view.FlowLayout;
 
 import java.util.ArrayList;
@@ -109,6 +112,16 @@ public class SearchActivity extends BaseActivity<SearchResultContract.Presenter>
         list = new ArrayList<>();
         adapter = new SearchAdapter(list, this);
         rv.setAdapter(adapter);
+        adapter.setOnItemClickLIstener(new BaseAdapter.OnItemClickLIstener() {
+            @Override
+            public void onItemClick(BaseAdapter.BaseViewHolder holder, int position) {
+                int id = list.get(position).getId();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", id);
+                bundle.putInt("position", position);
+                goToActivity(GoodsShopInfoActivity.class, bundle);
+            }
+        });
     }
 
     public void hideKeyboard(View view) {

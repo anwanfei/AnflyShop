@@ -1,5 +1,6 @@
 package com.anfly.anflyshop.ui.sort;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -87,7 +88,9 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
 
                     @Override
                     public QTabView.TabTitle getTitle(int position) {
-                        return new QTabView.TabTitle.Builder().setContent(categoryList.get(position).getName()).build();
+                        return new QTabView.TabTitle.Builder().setContent(categoryList.get(position).getName())
+                                .setTextColor(Color.RED,Color.BLACK)
+                                .build();
                     }
 
                     @Override

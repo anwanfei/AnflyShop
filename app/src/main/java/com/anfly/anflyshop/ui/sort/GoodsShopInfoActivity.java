@@ -130,6 +130,9 @@ public class GoodsShopInfoActivity extends BaseActivity<GoodsShopInfoConstract.P
 
     @Override
     public void getCartAddResponse(CardAddBean cardAddBean) {
+        if (cardAddBean.getErrno() == 0) {
+            Toast.makeText(GoodsShopInfoActivity.this, "加入成功", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick({R.id.iv_star, R.id.iv_cart, R.id.tv_buy_now, R.id.tv_add_shop_cart})
